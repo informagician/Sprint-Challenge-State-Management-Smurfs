@@ -16,4 +16,10 @@ export const fetchActivity = () => dispatch => {
     })
 }
 
-//
+export const addActivity = (localState) => {
+    console.log('add event api', localState)
+    axios
+    .post('http://localhost:3333/smurfs', localState)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}

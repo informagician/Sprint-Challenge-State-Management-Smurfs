@@ -11,9 +11,10 @@ export const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 smurfs:[
-                    ...state.smurfs, ...action.payload
+                    ...action.payload
                 ]
             }
+            
         default:
             return state;
     }

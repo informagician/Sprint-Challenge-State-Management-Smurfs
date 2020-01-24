@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import List from './List';
+import Add from './Add';
 
 import "./App.css";
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <List />
+        <Add />
       </div>
     );
   }
