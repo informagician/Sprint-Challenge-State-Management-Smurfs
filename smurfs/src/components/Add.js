@@ -22,25 +22,19 @@ const Add = props => {
         });
     }
 
-    let smurf = { ...localState,id:Date.now()};
+    let smurf = { ...localState};
 
-    // const newSmurf = (localState) => {
-    //         return smurf = {
-    //         name: localState.name,
-    //         age: localState.age,
-    //         height: localState.height,
-    //         id: Date.now()
-    //     }
-    // }
 
     console.log('smurf', smurf)
 
     function handleAdd (smurf) {
         Axios
         .post("http://localhost:3333/smurfs", smurf)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            props.fetchActivity();
+        })
         .catch(err => console.log(err))
-        props.fetchActivity();
     }
 
     return(
