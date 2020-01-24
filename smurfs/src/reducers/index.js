@@ -1,5 +1,5 @@
 const initialState = {
-
+    smurfs: []
 }
 
 export const reducer = (state=initialState, action) => {
