@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-import { addActivity } from '../actions'
+import { fetchActivity } from '../actions'
+import Axios from 'axios';
 
 const Add = props => {
 
@@ -17,13 +18,29 @@ const Add = props => {
         const value = e.target.value;
         setLocalState({
             ...localState,
-            [e.target.name]: value,
-            id: Date.now()
+            [e.target.name]: value
         });
     }
 
-    function handleAdd (localState) {
-        props.addActivity(localState)
+    let smurf = { ...localState,id:Date.now()};
+
+    // const newSmurf = (localState) => {
+    //         return smurf = {
+    //         name: localState.name,
+    //         age: localState.age,
+    //         height: localState.height,
+    //         id: Date.now()
+    //     }
+    // }
+
+    console.log('smurf', smurf)
+
+    function handleAdd (smurf) {
+        Axios
+        .post("http://localhost:3333/smurfs", smurf)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+        props.fetchActivity();
     }
 
     return(
@@ -31,7 +48,7 @@ const Add = props => {
             <label>Name: <input type="text" name="name" onChange={handleChange}/></label><br />
             <label>Age: <input type="text" name="age" onChange={handleChange}/></label><br />
             <label>Height: <input type="text" name="height" onChange={handleChange}/></label><br />
-            <button onClick={handleAdd}>Add Smurf</button>
+            <button onClick={() => handleAdd(smurf)}>Add Smurf</button>
         </div>
     );
 }
@@ -45,4 +62,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{addActivity})(Add);
+export default connect(mapStateToProps,{fetchActivity})(Add);
