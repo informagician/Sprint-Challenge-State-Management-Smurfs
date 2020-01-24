@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 
 const View = props => {
 
-    let data = null;
-    if (props.smurfs.length > 0) {
-        data = props.smurfs;
-    }
-    
+    console.log(props.data.name)
     return(
-        data ? (
-            <div>Success</div>
+        <div>
+        {props.data ? (
+            <div key={props.data.id}>
+                <h3>Name: {props.data.name}</h3>
+                <p>Age: {props.data.age}</p>
+                <p>Height: {props.data.height}</p>
+            </div>
         ) : (
             <div>None</div>
-        )
+        )}
+        </div>
     );
 }
 
