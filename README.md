@@ -23,10 +23,26 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+
+Context API solves the problem of passing pieces of state that are globally used by many components. Context API allows us to pass these values without passing props and to pass data through intermediary components.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+ - Actions are pieces of information that are sent to store.
+ - Reducers decide what should happen to state depending on the actions sent to the store.
+ - Store holds the state, allows access to it (by subscribers), and makes the updates to it. In redux we can have only a single store and the only way to update data is to dispatch a redux action which will change state within redux reducer.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+application state is global whereas component state is local to the component. for smaller size applications with lower number of nesting levels component state with prop drilling can be more practical, while for larger apps with many different levels of nesting that require states being passed multiple levels down or to other nested neigbors, application state can be more practical.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Thunk is a redux middleware for asynchronous actions in redux. Using thunk the action creators can return a function instead of an action.
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+It really depends on the size of the application I develop. I prefer to begin development with useState hook and as the application grows decide whether its necessary to use Redux and refactor the code.
 
 ## Project Set Up
 
